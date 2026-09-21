@@ -51,6 +51,22 @@ main{padding:28px 32px 56px;min-width:0}.page{display:none}.page.active{display:
 .mobile-top{display:none}.mobile-nav{display:none}
 @media(max-width:1100px){.hero,.content-grid,.form-shell,.request-layout,.earn-grid{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}.aircraft-strip,.client-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.app{display:block}.sidebar{display:none}.mobile-top{display:flex;position:sticky;top:0;z-index:40;background:#0d1117;color:#fff;padding:14px 16px;align-items:center;justify-content:space-between}main{padding:18px 14px 92px}.topbar{align-items:flex-start}.actions .btn:not(.primary){display:none}.grid4,.aircraft-strip,.client-grid,.two,.offer-kpis,.option-grid{grid-template-columns:1fr}.hero-main{min-height:440px}.hero-content h3{font-size:32px}.hero-badges{left:20px;right:20px}.table-wrap{overflow:auto}.table-wrap table{min-width:720px}.mobile-nav{position:fixed;display:flex;left:10px;right:10px;bottom:10px;z-index:50;background:#111827;border-radius:18px;padding:7px;justify-content:space-around;box-shadow:0 18px 40px rgba(0,0,0,.26)}.mobile-nav button{border:0;background:transparent;color:#9aa4b2;font-size:9px;padding:8px 7px;border-radius:10px}.mobile-nav button.active{color:#fff;background:#1d2632}}
+
+/* V3 — refined enterprise luxury UI */
+body{font-weight:400;letter-spacing:-.012em;background:#f7f8fa}
+.sidebar{width:auto;background:#0a0d12}
+.brand h1{font-weight:500;letter-spacing:-.02em}.nav button{font-weight:400;font-size:12px}
+.title h2{font-size:27px;font-weight:500;letter-spacing:-.045em}.title p{font-size:12px}
+.btn{font-weight:500;font-size:11px;border-radius:10px}.metric{border-radius:16px;padding:17px}.metric .k{font-size:10px;letter-spacing:.02em}.metric .v{font-size:25px;font-weight:500}.metric .d{font-size:9px}
+.card{border-radius:18px;box-shadow:none}.card-head h3{font-weight:500}.hero-main{border-radius:20px}.hero-content h3{font-weight:500;font-size:36px}.dark-card,.light-card{border-radius:18px}.dark-card .big{font-weight:500}
+.air-card{border-radius:16px}.air-title h4,.air-title span{font-weight:500}.table-wrap th{font-size:9px;text-transform:uppercase;letter-spacing:.07em}.table-wrap td{font-size:11px}
+.crm-toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.crm-search{display:flex;gap:8px;flex:1;max-width:560px}.crm-search input{width:100%;border:1px solid var(--line);background:white;border-radius:10px;padding:10px 12px;font-size:11px;outline:none}.crm-search input:focus{border-color:#9ab5f8}
+.crm-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}.crm-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}.crm-stat span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.06em}.crm-stat strong{display:block;font-size:20px;font-weight:500;margin-top:7px;letter-spacing:-.04em}
+.crm-layout{display:grid;grid-template-columns:1.45fr .75fr;gap:14px}.crm-table{overflow:auto}.crm-table table{min-width:820px}.client-cell{display:flex;align-items:center;gap:10px}.client-avatar{width:30px;height:30px;border-radius:9px;background:#f0f2f5;display:grid;place-items:center;font-size:9px;font-weight:600}.client-cell strong{display:block;font-weight:500}.client-cell small{display:block;color:var(--muted);font-size:9px;margin-top:2px}
+.crm-side{padding:18px}.crm-side h3{font-size:14px;font-weight:500;margin:0 0 4px}.crm-side>p{font-size:10px;color:var(--muted);margin:0 0 18px}.profile-head{display:flex;gap:11px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--line2)}.profile-head .client-avatar{width:42px;height:42px;border-radius:12px}.profile-head strong{font-size:13px;font-weight:500}.profile-head span{font-size:9px;color:var(--muted)}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.profile-grid div{border:1px solid var(--line2);border-radius:11px;padding:10px}.profile-grid span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.profile-grid strong{display:block;font-size:11px;font-weight:500;margin-top:4px}.activity-title{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:16px 0 10px}.activity{display:flex;gap:9px;padding:8px 0}.activity i{width:7px;height:7px;border-radius:50%;background:#2864ff;margin-top:4px}.activity strong{font-size:10px;font-weight:500;display:block}.activity small{font-size:9px;color:var(--muted);line-height:1.4}.tag-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}.tiny-tag{font-size:8px;background:#f3f5f8;border-radius:999px;padding:5px 7px;color:#566070}
+@media(max-width:1100px){.crm-summary{grid-template-columns:repeat(3,1fr)}.crm-layout{grid-template-columns:1fr}}
+@media(max-width:760px){.crm-summary{grid-template-columns:1fr 1fr}.crm-toolbar{align-items:stretch;flex-direction:column}.crm-search{max-width:none}}
 </style>
 </head>
 <body>
@@ -164,11 +180,41 @@ main{padding:28px 32px 56px;min-width:0}.page{display:none}.page.active{display:
 </section>
 
 <section class="page" id="clients">
-  <div class="topbar"><div class="title"><h2>Clients</h2><p>A lightweight CRM for the relationships you own.</p></div><div class="actions"><button class="btn primary go-new">+ New request</button><div class="avatar">LM</div></div></div>
-  <div class="client-grid">
-    <div class="card client"><div class="head"><div class="initial">MR</div><span class="status green"><i></i>Active</span></div><h4>Mario Rossi</h4><p>Private client · Milan</p><div class="client-m"><div><span>Requests</span><strong>12</strong></div><div><span>Booked</span><strong>4</strong></div><div><span>Earned</span><strong>€3,280</strong></div></div></div>
-    <div class="card client"><div class="head"><div class="initial">SK</div><span class="status green"><i></i>Active</span></div><h4>Sofia Keller</h4><p>Luxury retail · Zurich</p><div class="client-m"><div><span>Requests</span><strong>7</strong></div><div><span>Booked</span><strong>3</strong></div><div><span>Earned</span><strong>€1,940</strong></div></div></div>
-    <div class="card client"><div class="head"><div class="initial">AM</div><span class="status blue"><i></i>Review</span></div><h4>Andrea Moretti</h4><p>Family office · Milan</p><div class="client-m"><div><span>Requests</span><strong>5</strong></div><div><span>Booked</span><strong>2</strong></div><div><span>Earned</span><strong>€1,210</strong></div></div></div>
+  <div class="topbar"><div class="title"><h2>Client CRM</h2><p>Relationships, flight history, preferences and partner value in one place.</p></div><div class="actions"><button class="btn">Import clients</button><button class="btn primary go-new">+ New request</button><div class="avatar">LM</div></div></div>
+  <div class="crm-summary">
+    <div class="crm-stat"><span>Total clients</span><strong>128</strong></div>
+    <div class="crm-stat"><span>Active 90 days</span><strong>47</strong></div>
+    <div class="crm-stat"><span>Repeat clients</span><strong>36%</strong></div>
+    <div class="crm-stat"><span>Client volume</span><strong>€684K</strong></div>
+    <div class="crm-stat"><span>Partner earnings</span><strong>€14.8K</strong></div>
+  </div>
+  <div class="crm-toolbar">
+    <div class="crm-search"><input id="clientSearch" placeholder="Search client, company, city or route..."><button class="btn">Filters</button></div>
+    <div style="display:flex;gap:8px"><button class="btn">Segments</button><button class="btn">Export</button></div>
+  </div>
+  <div class="crm-layout">
+    <div class="card crm-table table-wrap">
+      <table id="crmTable"><thead><tr><th>Client</th><th>Segment</th><th>Last route</th><th>Last activity</th><th>Requests</th><th>Booked</th><th>Lifetime value</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr data-name="Mario Rossi Milan HNWI Ibiza"><td><div class="client-cell"><div class="client-avatar">MR</div><div><strong>Mario Rossi</strong><small>Milan · Private client</small></div></div></td><td>HNWI</td><td>LIN → IBZ</td><td>Today</td><td>12</td><td>4</td><td>€96,400</td><td><span class="status green"><i></i>Active</span></td></tr>
+        <tr data-name="Sofia Keller Zurich luxury retail Nice"><td><div class="client-cell"><div class="client-avatar">SK</div><div><strong>Sofia Keller</strong><small>Zurich · Luxury retail</small></div></div></td><td>Executive</td><td>MXP → NCE</td><td>2 days ago</td><td>7</td><td>3</td><td>€71,200</td><td><span class="status orange"><i></i>Review</span></td></tr>
+        <tr data-name="Andrea Moretti Milan family office Paris"><td><div class="client-cell"><div class="client-avatar">AM</div><div><strong>Andrea Moretti</strong><small>Milan · Family office</small></div></div></td><td>Family office</td><td>LIN → LBG</td><td>4 days ago</td><td>5</td><td>2</td><td>€54,800</td><td><span class="status green"><i></i>Active</span></td></tr>
+        <tr data-name="Giulia Fontana Como entrepreneur London"><td><div class="client-cell"><div class="client-avatar">GF</div><div><strong>Giulia Fontana</strong><small>Como · Entrepreneur</small></div></div></td><td>HNWI</td><td>MXP → FAB</td><td>9 days ago</td><td>9</td><td>5</td><td>€138,600</td><td><span class="status green"><i></i>VIP</span></td></tr>
+        <tr data-name="Paul Weber Geneva finance Palma"><td><div class="client-cell"><div class="client-avatar">PW</div><div><strong>Paul Weber</strong><small>Geneva · Finance</small></div></div></td><td>Corporate</td><td>GVA → PMI</td><td>12 days ago</td><td>6</td><td>2</td><td>€49,900</td><td><span class="status"><i></i>Quiet</span></td></tr>
+      </tbody></table>
+    </div>
+    <div class="card crm-side">
+      <h3>Client profile</h3><p>Relationship intelligence</p>
+      <div class="profile-head"><div class="client-avatar">MR</div><div><strong>Mario Rossi</strong><span>Milan · Private client · ATL since Mar 2026</span></div></div>
+      <div class="profile-grid"><div><span>Lifetime value</span><strong>€96,400</strong></div><div><span>Your earnings</span><strong>€3,280</strong></div><div><span>Conversion</span><strong>33.3%</strong></div><div><span>Avg. booking</span><strong>€24,100</strong></div></div>
+      <div class="activity-title">Preferences</div>
+      <div class="tag-row"><span class="tiny-tag">Light / midsize</span><span class="tiny-tag">Newest aircraft</span><span class="tiny-tag">LIN preferred</span><span class="tiny-tag">Privacy</span><span class="tiny-tag">No pets</span></div>
+      <div class="activity-title">Recent activity</div>
+      <div class="activity"><i></i><div><strong>Options ready · LIN → IBZ</strong><small>4 aircraft normalized by ATL · today 09:18</small></div></div>
+      <div class="activity"><i></i><div><strong>Request created</strong><small>Lead attributed to Maison Aurelia · today 08:41</small></div></div>
+      <div class="activity"><i style="background:#16a36f"></i><div><strong>Flight completed · LIN → NCE</strong><small>Citation CJ3+ · 14 Aug 2026</small></div></div>
+      <button class="btn primary go-new" style="width:100%;margin-top:14px">Create request for Mario</button>
+    </div>
   </div>
 </section>
 
@@ -193,6 +239,7 @@ navBtns.forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));doc
 const toast=document.getElementById('toast');function flash(m){toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600)}
 document.getElementById('submitRequest').addEventListener('click',()=>{const client=document.getElementById('client').value.trim()||'New client';const from=document.getElementById('from').value.trim()||'Origin';const to=document.getElementById('to').value.trim()||'Destination';const sf=(from.match(/\(([^)]+)\)/)||[])[1]||from.slice(0,3).toUpperCase();const st=(to.match(/\(([^)]+)\)/)||[])[1]||to.slice(0,3).toUpperCase();const tr=document.createElement('tr');tr.innerHTML='<td>ATL-DEMO-NEW</td><td>'+client+'</td><td>'+sf+' → '+st+'</td><td><span class="status blue"><i></i>Request received</span></td><td>Pending</td><td>Pending</td>';document.getElementById('requestRows').prepend(tr);flash('Request created. Lead protected and sent to ATL Operations.');setTimeout(()=>showPage('requests'),650)});
 document.getElementById('simulateBook').addEventListener('click',e=>{e.currentTarget.textContent='Client selected · ATL confirming aircraft';e.currentTarget.disabled=true;flash('Client selection recorded. ATL Operations is confirming the aircraft.')});
+const search=document.getElementById('clientSearch');if(search){search.addEventListener('input',()=>{const q=search.value.toLowerCase();document.querySelectorAll('#crmTable tbody tr').forEach(r=>r.style.display=(r.dataset.name||'').toLowerCase().includes(q)?'':'none')})}
 const modal=document.getElementById('modal');document.getElementById('payoutBtn').addEventListener('click',()=>modal.classList.add('show'));document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('show'));modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
 </script>
 </body>
