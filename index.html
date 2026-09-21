@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ATL Partner</title>
+  <meta name="description" content="ATL Partner — private aviation infrastructure for luxury businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f8fb;--panel:#ffffff;--text:#0b1220;--muted:#667085;--line:#e7ebf0;
+      --ink:#111827;--accent:#0e68ff;--accent-2:#111827;--success:#15a36d;--warning:#f3a723;
+      --shadow:0 16px 50px rgba(16,24,40,.07);--r:22px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
+    button,input,select,textarea{font:inherit}
+    .app{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
+    .sidebar{position:sticky;top:0;height:100vh;padding:26px 18px;background:#0d1117;color:#fff;display:flex;flex-direction:column}
+    .brand{display:flex;align-items:center;gap:12px;padding:6px 10px 26px}
+    .mark{width:36px;height:36px;border:1px solid rgba(255,255,255,.18);border-radius:12px;display:grid;place-items:center;font-weight:700;letter-spacing:-.04em}
+    .brand h1{font-size:16px;margin:0}.brand span{display:block;color:#8f98a8;font-size:11px;margin-top:2px}
+    .nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#9aa4b2;text-align:left;padding:12px 13px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:11px;font-weight:500}
+    .nav button:hover,.nav button.active{background:#171d26;color:white}
+    .nav .dot{width:7px;height:7px;border-radius:50%;background:#667085}
+    .nav button.active .dot{background:#4f8cff;box-shadow:0 0 0 4px rgba(79,140,255,.12)}
+    .partner-card{margin-top:auto;background:linear-gradient(180deg,#161c24,#11161d);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:16px}
+    .partner-card .tier{font-size:11px;color:#8ea8ff;text-transform:uppercase;letter-spacing:.12em}.partner-card strong{display:block;margin-top:6px;font-size:14px}.partner-card small{color:#8f98a8;line-height:1.45}
+    main{min-width:0;padding:26px 30px 44px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .title h2{font-size:27px;letter-spacing:-.03em;margin:0 0 5px}.title p{margin:0;color:var(--muted);font-size:13px}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{border:1px solid var(--line);background:white;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:600;color:#222}
+    .btn.primary{background:#0e68ff;color:#fff;border-color:#0e68ff;box-shadow:0 8px 24px rgba(14,104,255,.2)}
+    .btn.dark{background:#111827;color:#fff;border-color:#111827}
+    .avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#e9eef7;font-weight:700;font-size:13px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 1px 0 rgba(16,24,40,.02)}
+    .metric{padding:18px}
+    .metric .label{color:var(--muted);font-size:12px;margin-bottom:12px}.metric .value{font-size:27px;font-weight:700;letter-spacing:-.04em}.metric .delta{font-size:11px;margin-top:8px;color:var(--success)}
+    .delta.neutral{color:#667085}
+    .hero-grid{display:grid;grid-template-columns:1.5fr .85fr;gap:14px;margin-top:14px}
+    .chart-card{padding:20px}.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}.card-head h3{font-size:15px;margin:0 0 4px}.card-head p{font-size:12px;color:var(--muted);margin:0}
+    .chart-wrap{height:260px;position:relative;overflow:hidden}
+    .chart-wrap svg{width:100%;height:100%}.gridline{stroke:#edf0f4;stroke-width:1}.area{fill:url(#fill)}.line{fill:none;stroke:#0e68ff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .side-stat{padding:20px;display:flex;flex-direction:column;justify-content:space-between;background:#111827;color:#fff;border:none}
+    .side-stat .eyebrow{font-size:11px;color:#93a2b8;text-transform:uppercase;letter-spacing:.12em}.side-stat .big{font-size:44px;font-weight:700;letter-spacing:-.06em;margin:18px 0 6px}.side-stat p{color:#aeb8c8;font-size:12px;line-height:1.55;margin:0}
+    .progress{height:7px;background:#242d3b;border-radius:99px;margin-top:22px;overflow:hidden}.progress i{display:block;height:100%;width:72%;background:#4f8cff;border-radius:99px}
+    .section{margin-top:14px}.table-card{overflow:hidden}
+    table{width:100%;border-collapse:collapse} th,td{padding:15px 18px;border-bottom:1px solid var(--line);text-align:left;font-size:12px} th{color:#7b8494;font-weight:600;background:#fbfcfd} td strong{font-size:12px}
+    tr:last-child td{border-bottom:0}.status{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border-radius:999px;background:#f1f5f9;color:#475467;font-weight:600;font-size:11px}.status i{width:7px;height:7px;border-radius:50%;background:#98a2b3}.status.blue{background:#eef5ff;color:#175cd3}.status.blue i{background:#2e90fa}.status.green{background:#ecfdf3;color:#027a48}.status.green i{background:#12b76a}.status.orange{background:#fff7ed;color:#b54708}.status.orange i{background:#f79009}
+    .page{display:none}.page.active{display:block}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-card{padding:22px}
+    label{display:block;font-size:12px;font-weight:600;color:#344054;margin:0 0 7px} input,select,textarea{width:100%;border:1px solid #dfe4ea;background:#fff;border-radius:12px;padding:12px 13px;outline:none;color:#101828} input:focus,select:focus,textarea:focus{border-color:#84adff;box-shadow:0 0 0 3px rgba(14,104,255,.08)}
+    .field{margin-bottom:14px}.full{grid-column:1/-1}
+    .notice{display:flex;gap:12px;padding:14px 15px;border:1px solid #dbe6ff;background:#f7faff;border-radius:14px;color:#344054;font-size:12px;line-height:1.5}
+    .notice b{color:#175cd3}
+    .request-detail{display:grid;grid-template-columns:1fr .8fr;gap:14px}.timeline{padding:22px}.step{display:flex;gap:13px;position:relative;padding-bottom:23px}.step:before{content:"";position:absolute;left:8px;top:17px;bottom:0;width:1px;background:#e5e7eb}.step:last-child:before{display:none}.step i{width:17px;height:17px;border:4px solid white;border-radius:50%;background:#cbd5e1;box-shadow:0 0 0 1px #cbd5e1;z-index:1}.step.done i{background:#0e68ff;box-shadow:0 0 0 1px #0e68ff}.step strong{display:block;font-size:13px}.step small{display:block;color:var(--muted);margin-top:4px;line-height:1.4}
+    .quote-box{padding:20px}.aircraft{height:170px;border-radius:16px;background:url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1200&q=80') center/cover;position:relative;overflow:hidden}.aircraft:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.62))}
+    .aircraft-caption{position:absolute;z-index:2;bottom:14px;left:14px;color:#fff}.aircraft-caption strong{display:block}.aircraft-caption span{font-size:11px;color:#dbe4f2}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kpis div{border:1px solid var(--line);border-radius:12px;padding:11px}.kpis span{display:block;color:var(--muted);font-size:10px}.kpis strong{font-size:13px}
+    .earn-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.wallet{padding:22px;background:#0d1117;color:white;border:none}.wallet .balance{font-size:40px;font-weight:700;letter-spacing:-.05em;margin:15px 0 4px}.wallet small{color:#93a2b8}.wallet .btn{margin-top:20px}
+    .mini-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px}.mini-row:last-child{border-bottom:0}
+    .client-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.client{padding:18px}.client .initial{width:42px;height:42px;border-radius:14px;background:#eef2f7;display:grid;place-items:center;font-weight:700}.client h4{margin:13px 0 4px;font-size:14px}.client p{font-size:11px;color:var(--muted);margin:0}.client .client-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}.client .client-metrics div{border-top:1px solid var(--line);padding-top:10px}.client .client-metrics span{font-size:9px;color:var(--muted);display:block}.client .client-metrics strong{font-size:12px}
+    .toast{position:fixed;right:24px;bottom:24px;background:#111827;color:white;padding:14px 16px;border-radius:14px;box-shadow:var(--shadow);font-size:12px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}
+    .modal{position:fixed;inset:0;background:rgba(8,12,20,.34);display:none;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-card{width:min(430px,100%);background:#fff;border-radius:20px;padding:22px;box-shadow:0 28px 80px rgba(0,0,0,.18)}.modal-card h3{margin:0 0 8px}.modal-card p{color:var(--muted);font-size:12px;line-height:1.5}
+    .mobile-top{display:none}
+    @media(max-width:1050px){.grid-4{grid-template-columns:repeat(2,1fr)}.hero-grid,.request-detail,.earn-grid{grid-template-columns:1fr}.client-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){
+      .app{display:block}.sidebar{display:none}.mobile-top{display:flex;position:sticky;top:0;z-index:20;background:#0d1117;color:#fff;padding:14px 16px;justify-content:space-between;align-items:center}
+      main{padding:18px 14px 90px}.topbar{align-items:flex-start}.actions .btn:not(.primary){display:none}.grid-4,.form-grid,.client-grid{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}.request-detail,.earn-grid{grid-template-columns:1fr}
+      .mobile-nav{position:fixed;bottom:10px;left:10px;right:10px;z-index:30;background:#111827;border-radius:18px;padding:7px;display:flex;justify-content:space-around;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+      .mobile-nav button{border:0;background:transparent;color:#9aa4b2;font-size:10px;padding:8px 7px;border-radius:10px}.mobile-nav button.active{color:#fff;background:#1d2632}
+      table{min-width:720px}.table-card{overflow:auto}
+    }
+    @media(min-width:761px){.mobile-nav{display:none}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="mark">ATL</div><div><h1>ATL Partner</h1><span>Private aviation network</span></div></div>
+    <div class="nav" id="nav">
+      <button class="active" data-page="dashboard"><span class="dot"></span>Dashboard</button>
+      <button data-page="new"><span class="dot"></span>New request</button>
+      <button data-page="requests"><span class="dot"></span>Requests</button>
+      <button data-page="clients"><span class="dot"></span>Clients</button>
+      <button data-page="earnings"><span class="dot"></span>Earnings</button>
+    </div>
+    <div class="partner-card"><div class="tier">Partner tier · Select</div><strong>Maison Aurelia Milano</strong><small>Your client stays yours. ATL handles sourcing, quoting, booking and operations.</small></div>
+  </aside>
+
+  <div class="mobile-top"><strong>ATL Partner</strong><span style="font-size:12px;color:#9aa4b2">Demo</span></div>
+
+  <main>
+    <section class="page active" id="dashboard">
+      <div class="topbar"><div class="title"><h2>Good afternoon, Luca.</h2><p>Your private aviation business, without the operational workload.</p></div><div class="actions"><button class="btn">Export</button><button class="btn primary go-new">+ New request</button><div class="avatar">LM</div></div></div>
+
+      <div class="grid-4">
+        <div class="card metric"><div class="label">Booking volume</div><div class="value">€186.4K</div><div class="delta">↑ 18.6% vs last period</div></div>
+        <div class="card metric"><div class="label">Partner earnings</div><div class="value">€4,820</div><div class="delta">↑ €1,140 this month</div></div>
+        <div class="card metric"><div class="label">Active requests</div><div class="value">7</div><div class="delta neutral">3 awaiting client decision</div></div>
+        <div class="card metric"><div class="label">Conversion rate</div><div class="value">41.7%</div><div class="delta">↑ 6.2 pts</div></div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="card chart-card">
+          <div class="card-head"><div><h3>Partner performance</h3><p>Booking volume generated through ATL</p></div><select style="width:auto;padding:8px 10px"><option>Last 6 months</option></select></div>
+          <div class="chart-wrap">
+            <svg viewBox="0 0 700 250" preserveAspectRatio="none" aria-label="Performance chart">
+              <defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0e68ff" stop-opacity=".22"/><stop offset="100%" stop-color="#0e68ff" stop-opacity=".02"/></linearGradient></defs>
+              <line x1="0" x2="700" y1="50" y2="50" class="gridline"/><line x1="0" x2="700" y1="100" y2="100" class="gridline"/><line x1="0" x2="700" y1="150" y2="150" class="gridline"/><line x1="0" x2="700" y1="200" y2="200" class="gridline"/>
+              <path class="area" d="M0,210 C80,190 90,172 145,180 C210,190 230,118 292,132 C355,145 390,92 445,104 C520,120 545,64 610,76 C648,82 676,42 700,48 L700,250 L0,250 Z"/>
+              <path class="line" d="M0,210 C80,190 90,172 145,180 C210,190 230,118 292,132 C355,145 390,92 445,104 C520,120 545,64 610,76 C648,82 676,42 700,48"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card side-stat">
+          <div><div class="eyebrow">Network impact</div><div class="big">€28.9K</div><p>Average booking value from your referred clients. ATL converts demand into live aircraft options while you keep the relationship.</p></div>
+          <div><div style="display:flex;justify-content:space-between;font-size:11px;color:#aeb8c8"><span>Quarter target</span><span>72%</span></div><div class="progress"><i></i></div></div>
+        </div>
+      </div>
+
+      <div class="section card table-card">
+        <div class="card-head" style="padding:18px 18px 0"><div><h3>Recent requests</h3><p>Live view of opportunities you introduced</p></div><button class="btn" data-goto="requests">View all</button></div>
+        <table><thead><tr><th>Client</th><th>Route</th><th>Trip date</th><th>Status</th><th>Booking value</th><th>Your earning</th></tr></thead>
+          <tbody id="recentRows">
+            <tr><td><strong>M. Rossi</strong></td><td>LIN → IBZ</td><td>25 Sep 2026</td><td><span class="status blue"><i></i>Options ready</span></td><td>€18,500</td><td><strong>€450</strong></td></tr>
+            <tr><td><strong>S. Keller</strong></td><td>MXP → NCE</td><td>29 Sep 2026</td><td><span class="status orange"><i></i>Client reviewing</span></td><td>€24,900</td><td><strong>€612</strong></td></tr>
+            <tr><td><strong>A. Moretti</strong></td><td>LIN → LBG</td><td>03 Oct 2026</td><td><span class="status green"><i></i>Booked</span></td><td>€31,600</td><td><strong>€780</strong></td></tr>
+          </tbody></table>
+      </div>
+    </section>
+
+    <section class="page" id="new">
+      <div class="topbar"><div class="title"><h2>New request</h2><p>Give us the trip. ATL handles everything else.</p></div><div class="actions"><div class="avatar">LM</div></div></div>
+      <div class="form-grid">
+        <div class="card form-card">
+          <div class="card-head"><div><h3>Trip details</h3><p>Only the essentials</p></div></div>
+          <div class="field"><label>From</label><input id="from" value="Milan Linate (LIN)" /></div>
+          <div class="field"><label>To</label><input id="to" value="Ibiza (IBZ)" /></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="field"><label>Date</label><input id="date" type="date" value="2026-09-25"/></div>
+            <div class="field"><label>Time</label><input id="time" type="time" value="09:00"/></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="field"><label>Passengers</label><input id="pax" type="number" min="1" value="2"/></div>
+            <div class="field"><label>Trip type</label><select id="tripType"><option>One way</option><option>Round trip</option><option>Multi-city</option></select></div>
+          </div>
+        </div>
+        <div class="card form-card">
+          <div class="card-head"><div><h3>Client & preferences</h3><p>Client contact can stay private</p></div></div>
+          <div class="field"><label>Client name / reference</label><input id="client" value="Mario Rossi" /></div>
+          <div class="field"><label>Email or phone <span style="font-weight:400;color:#98a2b3">(optional)</span></label><input placeholder="Leave blank if you manage the client" /></div>
+          <div class="field"><label>Priority</label><select><option>Best value</option><option>Newest aircraft</option><option>Premium cabin</option><option>Fastest response</option></select></div>
+          <div class="field"><label>Notes</label><textarea rows="4" placeholder="Pets, luggage, catering, flexibility..."></textarea></div>
+        </div>
+        <div class="full notice"><div>🔒</div><div><b>Lead protection is automatic.</b> The opportunity is timestamped and attributed to your account. You can keep the customer relationship entirely on your side or invite ATL to handle client communication.</div></div>
+        <div class="full" style="display:flex;justify-content:flex-end"><button class="btn primary" id="submitRequest" style="padding:13px 18px">Send to ATL →</button></div>
+      </div>
+    </section>
+
+    <section class="page" id="requests">
+      <div class="topbar"><div class="title"><h2>Requests</h2><p>Every opportunity, tracked from request to commission.</p></div><div class="actions"><button class="btn primary go-new">+ New request</button><div class="avatar">LM</div></div></div>
+      <div class="request-detail">
+        <div class="card timeline">
+          <div class="card-head"><div><h3>ATL-0925-104 · Milan → Ibiza</h3><p>Mario Rossi · 2 passengers</p></div><span class="status blue"><i></i>Options ready</span></div>
+          <div class="step done"><i></i><div><strong>Request received</strong><small>25 Sep · 08:41 — Lead protected and mission created.</small></div></div>
+          <div class="step done"><i></i><div><strong>ATL sourcing</strong><small>12 operators contacted through ATL aviation infrastructure.</small></div></div>
+          <div class="step done"><i></i><div><strong>Options ready</strong><small>4 valid aircraft options normalized and priced for the client.</small></div></div>
+          <div class="step"><i></i><div><strong>Client reviewing</strong><small>Waiting for your client’s preferred aircraft.</small></div></div>
+          <div class="step"><i></i><div><strong>Booked</strong><small>Aircraft confirmed and payment secured.</small></div></div>
+          <div class="step"><i></i><div><strong>Commission available</strong><small>Your partner share becomes withdrawable after completion.</small></div></div>
+        </div>
+        <div class="card quote-box">
+          <div class="aircraft"><div class="aircraft-caption"><strong>Citation M2</strong><span>Recommended · Light jet</span></div></div>
+          <div class="kpis"><div><span>Client price</span><strong>€18,500</strong></div><div><span>ATL eligible earnings</span><strong>€3,000</strong></div><div><span>Your share</span><strong>€450</strong></div></div>
+          <div class="notice" style="margin-top:12px"><div>✓</div><div><b>Transparent commission.</b> Your agreement pays 15% of eligible ATL brokerage earnings on this booking.</div></div>
+          <button class="btn dark" style="width:100%;margin-top:12px" id="simulateBook">Simulate client selection</button>
+        </div>
+      </div>
+      <div class="section card table-card">
+        <table><thead><tr><th>ID</th><th>Client</th><th>Route</th><th>Status</th><th>Value</th><th>Earning</th></tr></thead><tbody id="requestRows">
+          <tr><td>ATL-0925-104</td><td>M. Rossi</td><td>LIN → IBZ</td><td><span class="status blue"><i></i>Options ready</span></td><td>€18,500</td><td>€450</td></tr>
+          <tr><td>ATL-0929-088</td><td>S. Keller</td><td>MXP → NCE</td><td><span class="status orange"><i></i>Client reviewing</span></td><td>€24,900</td><td>€612</td></tr>
+          <tr><td>ATL-1003-051</td><td>A. Moretti</td><td>LIN → LBG</td><td><span class="status green"><i></i>Booked</span></td><td>€31,600</td><td>€780</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="page" id="clients">
+      <div class="topbar"><div class="title"><h2>Clients</h2><p>A lightweight CRM for the relationships you own.</p></div><div class="actions"><button class="btn primary go-new">+ New request</button><div class="avatar">LM</div></div></div>
+      <div class="client-grid">
+        <div class="card client"><div class="initial">MR</div><h4>Mario Rossi</h4><p>Private client · Milan</p><div class="client-metrics"><div><span>Requests</span><strong>12</strong></div><div><span>Booked</span><strong>4</strong></div><div><span>Earned</span><strong>€3,280</strong></div></div></div>
+        <div class="card client"><div class="initial">SK</div><h4>Sofia Keller</h4><p>Luxury retail · Zurich</p><div class="client-metrics"><div><span>Requests</span><strong>7</strong></div><div><span>Booked</span><strong>3</strong></div><div><span>Earned</span><strong>€1,940</strong></div></div></div>
+        <div class="card client"><div class="initial">AM</div><h4>Andrea Moretti</h4><p>Family office · Milan</p><div class="client-metrics"><div><span>Requests</span><strong>5</strong></div><div><span>Booked</span><strong>2</strong></div><div><span>Earned</span><strong>€1,210</strong></div></div></div>
+      </div>
+    </section>
+
+    <section class="page" id="earnings">
+      <div class="topbar"><div class="title"><h2>Earnings</h2><p>Transparent commissions. Clear status. No chasing.</p></div><div class="actions"><div class="avatar">LM</div></div></div>
+      <div class="earn-grid">
+        <div class="card wallet"><div class="eyebrow">Available to withdraw</div><div class="balance">€2,760</div><small>Lifetime partner earnings: €14,820</small><br><button class="btn" id="payoutBtn">Request payout</button></div>
+        <div class="card form-card"><div class="card-head"><div><h3>Commission summary</h3><p>Current cycle</p></div></div>
+          <div class="mini-row"><span>Available</span><strong>€2,760</strong></div><div class="mini-row"><span>Pending flight completion</span><strong>€1,240</strong></div><div class="mini-row"><span>Paid lifetime</span><strong>€10,820</strong></div><div class="mini-row"><span>Partner rate</span><strong>15%</strong></div>
+        </div>
+      </div>
+      <div class="section card table-card"><div class="card-head" style="padding:18px 18px 0"><div><h3>Commission ledger</h3><p>Every booking and payout is auditable</p></div></div>
+        <table><thead><tr><th>Date</th><th>Request</th><th>Client</th><th>ATL eligible earnings</th><th>Your share</th><th>Status</th></tr></thead><tbody>
+          <tr><td>18 Sep</td><td>ATL-0918-032</td><td>G. Fontana</td><td>€4,120</td><td>€618</td><td><span class="status green"><i></i>Available</span></td></tr>
+          <tr><td>12 Sep</td><td>ATL-0912-018</td><td>P. Weber</td><td>€3,600</td><td>€540</td><td><span class="status green"><i></i>Available</span></td></tr>
+          <tr><td>03 Sep</td><td>ATL-0903-007</td><td>A. Moretti</td><td>€5,200</td><td>€780</td><td><span class="status blue"><i></i>Paid</span></td></tr>
+        </tbody></table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="active" data-page="dashboard">Home</button><button data-page="new">New</button><button data-page="requests">Trips</button><button data-page="clients">Clients</button><button data-page="earnings">Earnings</button>
+</div>
+
+<div class="toast" id="toast">Request created and attributed to your account.</div>
+
+<div class="modal" id="modal">
+  <div class="modal-card"><h3>Payout requested</h3><p>Your demo payout request for <strong>€2,760</strong> has been created. In production this would follow your verified payout method and approval rules.</p><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn primary" id="closeModal">Done</button></div></div>
+</div>
+
+<script>
+  const pages=[...document.querySelectorAll('.page')];
+  const navBtns=[...document.querySelectorAll('[data-page]')];
+  function showPage(id){
+    pages.forEach(p=>p.classList.toggle('active',p.id===id));
+    navBtns.forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  navBtns.forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+  document.querySelectorAll('.go-new').forEach(b=>b.addEventListener('click',()=>showPage('new')));
+  document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.goto)));
+
+  const toast=document.getElementById('toast');
+  function flash(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600)}
+
+  document.getElementById('submitRequest').addEventListener('click',()=>{
+    const client=document.getElementById('client').value.trim()||'New client';
+    const from=document.getElementById('from').value.trim()||'Origin';
+    const to=document.getElementById('to').value.trim()||'Destination';
+    const date=document.getElementById('date').value||'TBD';
+    const shortFrom=(from.match(/\(([^)]+)\)/)||[])[1]||from.slice(0,3).toUpperCase();
+    const shortTo=(to.match(/\(([^)]+)\)/)||[])[1]||to.slice(0,3).toUpperCase();
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>ATL-DEMO-NEW</td><td>'+client+'</td><td>'+shortFrom+' → '+shortTo+'</td><td><span class="status blue"><i></i>Request received</span></td><td>Pending</td><td>Pending</td>';
+    document.getElementById('requestRows').prepend(tr);
+    const tr2=document.createElement('tr');
+    tr2.innerHTML='<td><strong>'+client+'</strong></td><td>'+shortFrom+' → '+shortTo+'</td><td>'+date+'</td><td><span class="status blue"><i></i>Request received</span></td><td>Pending</td><td><strong>Pending</strong></td>';
+    document.getElementById('recentRows').prepend(tr2);
+    flash('Request created. Lead protected and sent to ATL Ops.');
+    setTimeout(()=>showPage('requests'),700);
+  });
+
+  document.getElementById('simulateBook').addEventListener('click',e=>{
+    e.currentTarget.textContent='Client selected · awaiting confirmation';
+    e.currentTarget.disabled=true;
+    flash('Client selection recorded. ATL Ops is confirming the aircraft.');
+  });
+
+  const modal=document.getElementById('modal');
+  document.getElementById('payoutBtn').addEventListener('click',()=>modal.classList.add('show'));
+  document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('show'));
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
+</script>
+</body>
+</html>
